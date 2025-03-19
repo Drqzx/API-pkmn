@@ -1,133 +1,382 @@
+/* Fond de page inspiré des Pokéballs */
 body {
-  background: rgb(255,0,0);
-  background: linear-gradient(90deg, rgba(255,0,0,1) 38%, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 51%, rgba(0,0,0,1) 100%);
+  background: #f0f0f0;
+  background-image: radial-gradient(circle at center, #ffffff 0%, #f0f0f0 40%);
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 20px;
 }
 
+/* Effet décoratif Pokéball en arrière-plan */
+body::before {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(to right, 
+    rgba(255,255,255,0) 46%, 
+    rgba(0,0,0,0.1) 47%, 
+    rgba(0,0,0,0.1) 53%, 
+    rgba(255,255,255,0) 54%);
+  transform: rotate(45deg);
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(204,45,62,0.4) 0%, rgba(204,45,62,0) 100%);
+  z-index: -2;
+}
+
+/* En-tête principal */
 h1 {
-    text-align: center;
-    color: #4d4a40; /* Couleur du texte */
-    font-size: 36px; /* Taille de police plus grande */
-    color: #ffffff; /* Couleur du texte */
-    font-size: 36px;
-    font-weight: bold;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgb(156, 152, 152); /* Fond gris clair */
-    background: rgb(70, 69, 69);
-    padding: 20px;
-    width: fit-content;
-    margin: 20px auto;
-    border: 2px solid black; /* Bordure noire */
-    border-radius: 10px; /* Coins arrondis */
-    border: 2px solid black;
-    border-radius: 10px;
-  }
-  
-  /* Style pour la section Mewto*/
-  #mewtwo-feature {
-    background-color: #4d307a; /* Couleur de fond légèrement violette */
-    padding: 15px;
-    margin: 20px auto;
-    border: 2px solid #4a4a6a; /* Bordure violette foncée */
-    border-radius: 10px;
-    text-align: center;
-    max-width: 300px; /* Limite la largeur maximale du cadre */
-  }
-  #mewtwo-feature .pokemon-name {
-    font-size: 22px;
-    font-weight: bold;
-    color: #4a4a6a;
-    margin-bottom: 8px;
-  }
-  #mewtwo-feature .pokemon-image {
-    max-width: 120px; /* Taille réduite de l'image */
-    border-radius: 50%;
-    border: 4px solid #ffffff;
-  }
-  #mewtwo-feature .pokemon-types {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 8px;
-  }
-  #mewtwo-feature .pokemon-type.psychic {
-    background-color: #bc98d4; /* Couleur pour le type "Psychique" */
-    color: #000000;
-    padding: 5px 8px;
-    border-radius: 10px;
-    font-weight: bold;
-  }
-  /* Style pour la liste des Pokémon */
-  #pokemon-list {
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; /* Centrer les éléments */
-    justify-content: center;
-  }
-  
+  text-align: center;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  background-color: #cc2d3e;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+  padding: 20px;
+  margin: 30px auto;
+  width: fit-content;
+  border: 3px solid #000;
+  border-radius: 50px;
+  box-shadow: 0 8px 15px rgba(0,0,0,0.3), inset 0 -4px 0 rgba(0,0,0,0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+h1::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: #000;
+  opacity: 0.2;
+}
+
+/* Style pour la section Mewtwo */
+#mewtwo-feature {
+  background: linear-gradient(135deg, #7b68ee 0%, #4a3b8a 100%);
+  padding: 25px;
+  margin: 30px auto;
+  border: 3px solid #2d2152;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 320px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
+
+#mewtwo-feature:hover {
+  transform: translateY(-5px);
+}
+
+#mewtwo-feature .pokemon-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  /* Retirer les styles qui peuvent être en conflit */
+  border: none;
+  background: none;
+  padding: 5px 10px;
+  display: block;
+}
+
+#mewtwo-feature .pokemon-image {
+  max-width: 150px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+#mewtwo-feature .pokemon-image:hover {
+  transform: scale(1.05);
+}
+
+#mewtwo-feature .pokemon-types {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+#mewtwo-feature .pokemon-type.psychic {
+  background: linear-gradient(to bottom, #f366b9 0%, #cb5eae 100%);
+  color: #fff;
+  padding: 8px 15px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-decoration: none;
+}
+
+/* Liste des Pokémon */
+#pokemon-list {
+  padding: 20px 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#pokemon-list li {
+  width: calc(20% - 30px);
+  min-width: 200px;
+  box-sizing: border-box;
+  padding: 15px;
+  text-align: center;
+  border-radius: 20px;
+  background: radial-gradient(circle at center, #fff 0%, #fff 40%, #f0f0f0 100%);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+  border: 3px solid #cc2d3e;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#pokemon-list li::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 25%;
+  background: #cc2d3e;
+  border-top: 3px solid #000;
+  z-index: 0;
+}
+
+#pokemon-list li::before {
+  content: "";
+  position: absolute;
+  top: calc(75% - 15px);
+  left: calc(50% - 15px);
+  width: 30px;
+  height: 30px;
+  background: #fff;
+  border: 3px solid #000;
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 0 0 5px #cc2d3e;
+}
+
+#pokemon-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 20px rgba(0,0,0,0.2);
+}
+
+.pokemon-name {
+  border: none;
+  border-radius: 30px;
+  padding: 8px 15px;
+  margin: 15px 0;
+  display: inline-block;
+  background-color: #cc2d3e;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.pokemon-image {
+  max-width: 120px;
+  height: auto;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  margin: 10px auto;
+  display: block;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.pokemon-image:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.pokemon-types {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+  position: relative;
+  z-index: 2;
+}
+
+.pokemon-type {
+  font-weight: bold;
+  background-color: #f3f3f3;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 2px solid #333;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
+  text-decoration: none; /* Supprimer le soulignement */
+}
+
+/* Types Pokémon avec couleurs appropriées */
+.pokemon-type.electric {
+  background: linear-gradient(to bottom, #ffe02c 0%, #ffc71c 100%);
+  color: #333;
+  border-color: #b8a038;
+}
+
+.pokemon-type.fire {
+  background: linear-gradient(to bottom, #ff7b00 0%, #ff5500 100%);
+  color: #fff;
+  border-color: #b22328;
+}
+
+.pokemon-type.water {
+  background: linear-gradient(to bottom, #5090f0 0%, #3b82f6 100%);
+  color: #fff;
+  border-color: #445e9c;
+}
+
+.pokemon-type.grass {
+  background: linear-gradient(to bottom, #62bd5a 0%, #3f9c35 100%);
+  color: #fff;
+  border-color: #4e8234;
+}
+
+.pokemon-type.ice {
+  background: linear-gradient(to bottom, #98d8d8 0%, #61cec9 100%);
+  color: #333;
+  border-color: #638d8d;
+}
+
+.pokemon-type.fighting {
+  background: linear-gradient(to bottom, #c03028 0%, #9d2721 100%);
+  color: #fff;
+  border-color: #7d1f1a;
+}
+
+.pokemon-type.poison {
+  background: linear-gradient(to bottom, #a040a0 0%, #682a68 100%);
+  color: #fff;
+  border-color: #682a68;
+}
+
+.pokemon-type.ground {
+  background: linear-gradient(to bottom, #e0c068 0%, #d4a82f 100%);
+  color: #333;
+  border-color: #927d44;
+}
+
+.pokemon-type.flying {
+  background: linear-gradient(to bottom, #a890f0 0%, #9180c4 100%);
+  color: #fff;
+  border-color: #6d5e9c;
+}
+
+.pokemon-type.psychic {
+  background: linear-gradient(to bottom, #f366b9 0%, #cb5eae 100%);
+  color: #fff;
+  border-color: #a13959;
+}
+
+.pokemon-type.bug {
+  background: linear-gradient(to bottom, #a8b820 0%, #8e9919 100%);
+  color: #fff;
+  border-color: #6d7815;
+}
+
+.pokemon-type.rock {
+  background: linear-gradient(to bottom, #b8a038 0%, #93802d 100%);
+  color: #fff;
+  border-color: #786824;
+}
+
+.pokemon-type.ghost {
+  background: linear-gradient(to bottom, #705898 0%, #554374 100%);
+  color: #fff;
+  border-color: #493963;
+}
+
+.pokemon-type.dragon {
+  background: linear-gradient(to bottom, #7038f8 0%, #4c08ef 100%);
+  color: #fff;
+  border-color: #4924a1;
+}
+
+.pokemon-type.dark {
+  background: linear-gradient(to bottom, #705848 0%, #513f34 100%);
+  color: #fff;
+  border-color: #49392f;
+}
+
+.pokemon-type.steel {
+  background: linear-gradient(to bottom, #b8b8d0 0%, #9797ba 100%);
+  color: #333;
+  border-color: #787887;
+}
+
+.pokemon-type.fairy {
+  background: linear-gradient(to bottom, #ee99ac 0%, #e77c96 100%);
+  color: #fff;
+  border-color: #9b6470;
+}
+
+/* Media queries pour responsive */
+@media (max-width: 768px) {
   #pokemon-list li {
-    width: 20%; /* Réduire la largeur pour que plus de Pokémon soient affichés sur une ligne */
-    width: 20%;
-    box-sizing: border-box;
+    width: calc(50% - 30px);
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #pokemon-list li {
+    width: calc(100% - 30px);
+  }
+  
+  h1 {
+    font-size: 1.5rem;
     padding: 10px;
-    text-align: center;
-    margin: 10px;
-    background-color: white; /* Fond blanc pour chaque Pokémon */
-    border: 2px solid black; /* Bordure noire autour de chaque Pokémon */
-    border-radius: 10px; /* Coins arrondis */
-    background: rgb(0,0,0);
-    background: radial-gradient(circle, rgba(0,0,0,1) 10%, rgba(253,255,255,1) 10%, rgba(160,183,189,1) 35%, rgb(88, 177, 212) 40%, rgb(146, 22, 22) 50%, rgb(235, 214, 95) 60%, rgb(32, 95, 26) 65%, rgb(226, 200, 157) 90%, rgb(59, 9, 9) 100%);
   }
-  
-  .pokemon-name {
-    border: 2px solid #ffffff; /* Bordure blanche */
-    border-radius: 5px; /* Bordure arrondie */
-    padding: 5px 10px; /* Espacement intérieur */
-    margin-bottom: 10px; /* Marge inférieure */
-    display: inline-block; /* Affichage en ligne pour s'ajuster à la taille du contenu */
-    background-color: rgba(255, 255, 255, 0.8); /* Fond transparent légèrement blanc */
-    border: 2px solid #ffffff;
-    border-radius: 5px;
-    padding: 5px 10px;
-    margin-bottom: 10px;
-    display: inline-block;
-    background-color: rgba(255, 255, 255, 0.8);
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  .pokemon-image {
-    border-radius: 50%; /* Bordure arrondie pour l'image */
-    border: 4px solid transparent; /* Supprime le bord noir */
-    border-radius: 50%;
-    border: 4px solid transparent;
-  }
-  
-  #pokemon-list li img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 50%; /* Arrondir l'image */
-  }
-  
-  .pokemon-types {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  .pokemon-type {
-    font-weight: bold; /* Police en gras */
-    text-decoration: underline; /* Souligné */
-    background-color: #f3f3f3;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    font-weight: bold;
-    text-transform: capitalize;
-  }
-  .pokemon-type.electric {
-    background-color: #f7e100;
-  }
-  /* Ajouter plus de styles pour chaque type si nécessaire */
+}
+
+/* Ajout de polices de secours au cas où les polices web ne se chargent pas */
+h1, .pokemon-name {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+}
+
+body {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
